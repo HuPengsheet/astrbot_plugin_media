@@ -20,6 +20,8 @@ class MyPlugin(Star):
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         logger.info(message_chain)
         url = message_str.split(" ")
+        print(url[0])
+        print(url[1])
         if(len(url)<1):
             return 
         url_main(url[1])
