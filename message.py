@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 import lark_oapi as lark
 from lark_oapi.api.im.v1 import *
 
-from feishu.client import feishu_client
+from client import feishu_client
 
 
 def _infer_receive_id_type(receive_id: str) -> str:
