@@ -11,11 +11,11 @@ def extract_bvid(url: str) -> str | None:
     return match.group(0) if match else None
 
 
-def bili_url_content(bvid: str) -> None:
+async def bili_url_content(bvid: str) -> None:
     # 实例化 Video 类
     v = video.Video(bvid=bvid)
     # 获取信息
-    info = v.get_info()
+    info = await v.get_info()
     data = info["pubdate"]
     field = {"标题":info["title"],"作者":info["owner"]["name"],"来源":"B站","发布时间":" ","主要内容":" ","封面链接":" "}
     res = create_record("BAeHbTgMLa2rqTsJBGKcYXe4n8e","tblWnM504LF63nim",field)
