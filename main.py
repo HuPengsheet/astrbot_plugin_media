@@ -24,8 +24,8 @@ class MyPlugin(Star):
         print(url[1])
         if(len(url)<1):
             return 
-        url_main(url[1])
-        yield event.plain_result(f"Hello, {user_name}, 你发了 {url[1]}!") # 发送一条纯文本消息
+        url_main(url[2])
+        yield event.plain_result(f"Hello, {user_name}, 你发了 {url[2]}!") # 发送一条纯文本消息
 
     async def terminate(self):
         """可选择实现异步的插件销毁方法，当插件被卸载/停用时会调用。"""

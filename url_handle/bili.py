@@ -19,8 +19,7 @@ async def bili_url_content(bvid: str) -> None:
     data = info["pubdate"]
     field = {"标题":info["title"],"作者":info["owner"]["name"],"来源":"B站","发布时间":" ","主要内容":" ","封面链接":" "}
     res = create_record("BAeHbTgMLa2rqTsJBGKcYXe4n8e","tblWnM504LF63nim",field)
-    if not res.success():
-        print(f"client.bitable.v1.app_table_record.create failed, code: {res.code}, msg: {res.msg}, log_id: {res.get_log_id()}, resp: \n{json.dumps(json.loads(res.raw.content), indent=4, ensure_ascii=False)}")
+    print(res)
     return info
 
 
