@@ -1,7 +1,7 @@
 from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
-from .table import create_record
+from .url_handle.url_main import url_main
 
 @register("helloworld", "YourName", "一个简单的 Hello World 插件", "1.0.0")
 class MyPlugin(Star):
@@ -22,6 +22,7 @@ class MyPlugin(Star):
         url = message_str.split(" ")
         if(len(url)<1):
             return 
+        url_main(url[1])
         yield event.plain_result(f"Hello, {user_name}, 你发了 {url[1]}!") # 发送一条纯文本消息
 
     async def terminate(self):
