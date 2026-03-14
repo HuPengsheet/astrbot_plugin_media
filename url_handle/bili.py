@@ -1,5 +1,5 @@
 import re
-import asyncio
+
 from bilibili_api import video
 from .table import create_record
 import json
@@ -25,9 +25,9 @@ async def bili_url_content(bvid: str) -> None:
 
 
 
-def bili_run(url: str) -> None:
+async def bili_run(url: str) -> None:
     bvid = extract_bvid(url)
     if not bvid:
         raise ValueError(f"无法从 URL 中提取 BV 号: {url}")
-    res = bili_url_content(bvid)
+    res = await bili_url_content(bvid)
     print(res)
