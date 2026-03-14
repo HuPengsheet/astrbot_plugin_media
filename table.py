@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional
 import lark_oapi as lark
 from lark_oapi.api.bitable.v1 import *
 
-from client import feishu_client
+from .client import feishu_client
 
 
 def _parse_response(response: lark.BaseResponse) -> Dict[str, Any]:
