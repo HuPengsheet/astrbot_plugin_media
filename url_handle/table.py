@@ -3,6 +3,7 @@
 参考文档: feishu-open-docs/uUDN04SN0QjL1QDN/bitable-v1/
 """
 import json
+import logging
 from typing import Any, Dict, List, Optional
 
 import lark_oapi as lark
@@ -10,10 +11,20 @@ from lark_oapi.api.bitable.v1 import *
 
 from .client import feishu_client
 
+logger = logging.getLogger(__name__)
+
 
 def _parse_response(response: lark.BaseResponse) -> Dict[str, Any]:
-    """解析响应，返回完整 json 数据。code 为 0 表示成功。"""
+    """解析响应，返回完整 json 数据。code 为 0 表示成功。失败时打日志并仍返回解析后的 body。"""
     json_data = json.loads(response.raw.content)
+    if not response.success():
+        logger.error(
+            "bitable api failed, code: %s, msg: %s, log_id: %s, resp: %s",
+            response.code,
+            response.msg,
+            response.get_log_id(),
+            json.dumps(json_data, indent=2, ensure_ascii=False),
+        )
     return json_data
 
 
