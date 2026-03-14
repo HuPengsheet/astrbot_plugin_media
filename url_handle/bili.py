@@ -1,7 +1,7 @@
 import re
 import asyncio
 from bilibili_api import video
-from table import create_record
+from .table import create_record
 
 
 def extract_bvid(url: str) -> str | None:
